@@ -63,10 +63,7 @@ spec:
     pmtuDiscovery:
       enabled: true
     prometheus:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-        trustCRDsExist: true
+      enabled: false
     rollOutCiliumPods: true
     routingMode: native
     securityContext:
