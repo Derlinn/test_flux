@@ -3,12 +3,12 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
-  name: envoy-gateway
+  name: cilium
 spec:
   interval: 15m
   layerSelector:
     mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
     operation: copy
   ref:
-    tag: v1.6.0
-  url: oci://mirror.gcr.io/envoyproxy/gateway-helm
+    tag: 1.18.4
+  url: oci://ghcr.io/home-operations/charts-mirror/cilium
