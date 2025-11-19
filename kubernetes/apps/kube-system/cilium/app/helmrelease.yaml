@@ -49,9 +49,9 @@ spec:
     l2announcements:
       enabled: false
 
-    loadBalancer:
-      algorithm: maglev
-      mode: dsr
+#    loadBalancer:
+#      algorithm: maglev
+#      mode: dsr
 
     localRedirectPolicy: true
 
