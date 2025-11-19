@@ -44,7 +44,8 @@ spec:
 
     k8s-require-ipv4-pod-cidr: true
 
-    tunnel: "vxlan"
+    routingMode: "tunnel"
+    tunnelProtocol: "vxlan"
 
     cluster:
       name: "cilium-cluster"
