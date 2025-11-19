@@ -9,111 +9,22 @@ spec:
     kind: OCIRepository
     name: cilium
   interval: 1h
-  # Increase timeouts to allow CNI agents enough time to restart and stabilize.
   install:
       timeout: 15m0s
   upgrade:
       timeout: 15m0s
   values:
-    # ----------------------------------------------------------------------
-    # 1. CORE CONFIGURATION (CRITICAL FOR TALOS COMPATIBILITY)
-    # ----------------------------------------------------------------------
-    kubeProxyReplacement: true
-    k8sServiceHost: 127.0.0.1 # Required for Talos KubePrism
-    k8sServicePort: 7445     # Required for Talos KubePrism
-
-    # We keep routingMode: native as it's required for Talos, but note it's advanced.
-    routingMode: native
-
-    ipam:
-      mode: kubernetes
-
     cni:
       exclusive: true
 
     cgroup:
-      automount:
+      autoMount:
         enabled: false
-      hostRoot: /sys/fs/cgroup
+      hostRoot: "/sys/fs/cgroup"
 
-    # Set the device to use (this is often required for native routing)
-    devices: eth+
+    ipam:
+      mode: "kubernetes"
 
-    # Set the native CIDR for routing
-    ipv4NativeRoutingCIDR: 10.42.0.0/16
-
-    # ----------------------------------------------------------------------
-    # 2. DISRUPTIVE / ADVANCED FEATURES (COMMENTED OUT FOR STABILITY)
-    # ----------------------------------------------------------------------
-    # autoDirectNodeRoutes: true # Recommended for native routing, but uncomment later if stability issues persist.
-
-    # Highly advanced feature for throughput optimization. Commented out.
-    # bandwidthManager:
-    #   enabled: true
-    #   bbr: true
-
-    bpf:
-      # datapathMode: netkit is highly disruptive on upgrade. Commented out.
-      # datapathMode: netkit
-      masquerade: true
-      preallocateMaps: true
-      # tproxy: true # Commented out for initial stability.
-
-    # bpfClockProbe: true # Optimization, comment out for initial stability.
-
-    # BGP Control Plane is complex and not needed for basic Flux communication. Commented out.
-    bgpControlPlane:
-      enabled: true
-
-    # enableIPv4BIGTCP: true # Advanced optimization, comment out.
-
-    # endpointRoutes: # Less critical but simplified for stability.
-    #   enabled: true
-
-    envoy:
-      enabled: false # Ensure Envoy is off if not used for Ingress/Gateway API
-
-    hubble:
-      enabled: false # Ensure Hubble is off if not needed immediately (use minimal overhead)
-
-    # DSR mode is highly disruptive for load balancing. Commented out.
-    loadBalancer:
-      algorithm: maglev
-      # mode: dsr
-
-    # localRedirectPolicy: true # Commented out for initial stability.
-
-    # pmtuDiscovery: # Path MTU Discovery can cause issues. Commented out.
-    #   enabled: true
-
-    # ----------------------------------------------------------------------
-    # 3. OPERATOR AND MONITORING (Set to minimal)
-    # ----------------------------------------------------------------------
-    dashboards:
-      enabled: false # Disable until Hubble/Prometheus are stable
-
-    operator:
-      # Disable until Hubble/Prometheus are stable
-      dashboards:
-        enabled: false
-      prometheus:
-        enabled: false
-        # serviceMonitor:
-        #   enabled: false
-      replicas: 2
-      rollOutPods: true
-
-    prometheus:
-      enabled: false
-      # serviceMonitor:
-      #   enabled: false
-      #   trustCRDsExist: false
-
-    rollOutCiliumPods: true
-
-    # ----------------------------------------------------------------------
-    # 4. SECURITY CONTEXT (KEEP ACTIVE)
-    # ----------------------------------------------------------------------
     securityContext:
       capabilities:
         ciliumAgent:
