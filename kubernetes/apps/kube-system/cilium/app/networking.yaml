@@ -52,7 +52,7 @@ spec:
     - name: cilium
       localASN: 64514
       peers:
-        - name: unifi
+        - name: mirotik-router
           peerASN: 64513
           peerAddress: 10.25.30.254
           peerConfigRef:
