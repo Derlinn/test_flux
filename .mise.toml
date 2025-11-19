@@ -1,8 +1,8 @@
 [env]
 _.python.venv = { path = "{{config_root}}/.venv", create = true }
 NODE_ENV = "pre-production"
-KUBECONFIG = "{{config_root}}/terraform/envs/{{env.NODE_ENV}}/output/kube-config.yaml"
-TALOSCONFIG = "{{config_root}}/terraform/envs/{{env.NODE_ENV}}/output/talosconfig"
+KUBECONFIG = "/home/theo/01-DEV/home-prov/terraform/envs/{{env.NODE_ENV}}/output/kube-config.yaml"
+TALOSCONFIG = "/home/theo/01-DEV/home-prov/terraform/envs/{{env.NODE_ENV}}/output/talosconfig"
 
 [tools]
 "python" = "3.14.0"
