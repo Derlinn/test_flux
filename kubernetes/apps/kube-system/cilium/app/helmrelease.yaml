@@ -72,6 +72,16 @@ spec:
 #      algorithm: maglev
 #      mode: dsr
 
+#    routingMode: native
+#    autoDirectNodeRoutes: true
+#    enableIPv4BIGTCP: true
+#    endpointRoutes:
+#      enabled: true
+
+#    ipv4NativeRoutingCIDR: 10.42.0.0/16
+
+#    localRedirectPolicy: true
+
     localRedirectPolicy: true
 
     operator:
