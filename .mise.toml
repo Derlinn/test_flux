@@ -2,7 +2,7 @@
 _.python.venv = { path = "{{config_root}}/.venv", create = true }
 NODE_ENV     = "pre-production"
 KUBECONFIG   = "/home/theo/01-DEV/home-prov/terraform/envs/{{env.NODE_ENV}}/output/kube-config.yaml"
-TALOSCONFIG  = "/home/theo/01-DEV/home-prov/terraform/envs/{{env.NODE_ENV}}/output/talosconfig"
+TALOSCONFIG  = "/home/theo/01-DEV/home-prov/terraform/envs/{{env.NODE_ENV}}/output/talos-config"
 
 # kube-ps1 uniquement dans l'env mise
 KUBE_PS1_NS_ENABLE  = "true"
