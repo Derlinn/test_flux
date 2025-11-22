@@ -44,9 +44,6 @@ spec:
 
     k8s-require-ipv4-pod-cidr: true
 
-    routingMode: "tunnel"
-    tunnelProtocol: "vxlan"
-
     cluster:
       name: "cilium-cluster"
 
@@ -68,22 +65,20 @@ spec:
     l2announcements:
       enabled: false
 
-#    loadBalancer:
-#      algorithm: maglev
-#      mode: dsr
+    loadBalancer:
+      algorithm: maglev
+      mode: dsr
 
-#    routingMode: native
-#    autoDirectNodeRoutes: true
-#    enableIPv4BIGTCP: true
-#    endpointRoutes:
-#      enabled: true
+    routingMode: native
+#    tunnelProtocol: "vxlan"
+    autoDirectNodeRoutes: true
+    enableIPv4BIGTCP: true
+    endpointRoutes:
+      enabled: true
 
-#    ipv4NativeRoutingCIDR: 10.42.0.0/16
-
-#    localRedirectPolicy: true
+    ipv4NativeRoutingCIDR: 10.42.0.0/16
 
     localRedirectPolicy: true
-
     operator:
       dashboards:
         enabled: true
